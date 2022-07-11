@@ -1,0 +1,10 @@
+package com.boardMVC.app.board.vo;
+
+public class BoardVO {
+	private int boardNumber;
+	private String boardTitle;
+	private String boardContent;
+	private int memberNumber;
+	private String boardDate;
+	private int readCount;
+}

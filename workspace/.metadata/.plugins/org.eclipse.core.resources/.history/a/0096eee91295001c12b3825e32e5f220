@@ -1,0 +1,5 @@
+package com.boardMVC.app.board;
+
+public class BoardWrite {
+
+}

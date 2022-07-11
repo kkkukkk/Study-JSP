@@ -1,0 +1,5 @@
+package com.boardMVC.app.member;
+
+public class MemberLoginOk {
+
+}

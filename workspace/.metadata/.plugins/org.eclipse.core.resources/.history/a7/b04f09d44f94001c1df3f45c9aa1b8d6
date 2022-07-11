@@ -1,0 +1,70 @@
+package com.boardMVC.app.board;
+
+import java.io.IOException;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.boardMVC.action.Action;
+import com.boardMVC.action.ActionForward;
+import com.boardMVC.app.board.dao.BoardDAO;
+
+public class BoardListOk implements Action{
+
+	@Override
+	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		HashMap<String, Integer> boardMap = new HashMap<>();
+		ActionForward af = new ActionForward();
+		BoardDAO dao = new BoardDAO();
+
+		int total = dao.getTotal();
+		String temp = req.getParameter("page");
+		int page = temp == null ? 1 : Integer.parseInt(temp);
+		int rowCount = 10;
+		int pageSize = 10;
+		
+		int startRow = (page - 1) * rowCount;
+		
+		int startPage = ((page - 1) / pageSize) * pageSize + 1;
+		int endPage = startPage + pageSize - 1;
+		int realEndPage = (int)Math.ceil(total / (double)rowCount);
+		
+		endPage = endPage > realEndPage ? realEndPage : endPage;
+		
+		
+		boardMap.put("startRow", startRow);
+		boardMap.put("rowCount", rowCount);
+
+		req.setAttribute("boardList", dao.selectAll(boardMap));
+		req.setAttribute("page", page);
+		req.setAttribute("startPage", startPage);
+		req.setAttribute("endPage", endPage);
+		req.setAttribute("realEndPage", realEndPage);
+		req.setAttribute("total", total);
+		
+		af.setRedirect(false);
+		af.setPath("/app/board/boardList.jsp");
+		
+		return af;
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+package com.boardMVC.app.board;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.boardMVC.action.Action;
+import com.boardMVC.action.ActionForward;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+public class BoardUpdateOk implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		
+		String uploadFolder = "D:\\aigb_0900_hds\\jsp\\workspace\\boardMVC\\WebContent\\upload";
+		int fileSize = 1024 * 1024 * 5; //5M
+		
+		MultipartRequest multi = new MultipartRequest(req, uploadFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
+		
+		board.setBoardTitle(multi.getParameter("boardTitle"));
+		board.setBoardContent(multi.getParameter("boardContent"));
+		
+		return null;
+	}
+
+}

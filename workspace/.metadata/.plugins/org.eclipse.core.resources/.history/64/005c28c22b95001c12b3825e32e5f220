@@ -1,0 +1,50 @@
+package com.boardMVC.app.board.dao;
+
+import java.util.Enumeration;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.boardMVC.app.board.vo.FilesVO;
+import com.boardMVC.mybatis.config.MyBatisConfig;
+import com.oreilly.servlet.MultipartRequest;
+
+public class FilesDAO {
+	SqlSessionFactory sqlSessionFactory = MyBatisConfig.getSqlsessoinFactory();
+	SqlSession sqlSession;
+	
+	public FilesDAO() {
+		sqlSession = sqlSessionFactory.openSession(true);
+	}
+	
+	//첨부파일 추가(SQL)
+	private void insert(FilesVO file) {
+		sqlSession.insert("Files.insert", file);
+	}
+	
+	//첨부파일 추가(로직)
+	public void insert(MultipartRequest multi, int boardNum) {
+		Enumeration<String> files = multi.getFileNames();
+		
+		while(files.hasMoreElements()) {
+			//사용자가 업로드한 파일 태그의 name값
+			String name = files.nextElement();
+			
+			//사용자가 업로드한 원본 파일 이름
+			String fileNameOriginal = multi.getOriginalFileName(name);
+			
+			//중복 시 변경된 이름
+			String fileName = multi.getFilesystemName(name);
+		}
+	}
+	
+}
+
+
+
+
+
+
+
+
+

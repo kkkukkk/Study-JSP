@@ -1,0 +1,37 @@
+package com.boardMVC.app.board.dao;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.boardMVC.app.board.vo.FilesVO;
+import com.boardMVC.mybatis.config.MyBatisConfig;
+import com.oreilly.servlet.MultipartRequest;
+
+public class FilesDAO {
+	SqlSessionFactory sqlSessionFactory = MyBatisConfig.getSqlsessoinFactory();
+	SqlSession sqlSession;
+	
+	public FilesDAO() {
+		sqlSession = sqlSessionFactory.openSession(true);
+	}
+	
+	//첨부파일 추가(SQL)
+	private void insert(FilesVO file) {
+		sqlSession.insert("Files.insert", file);
+	}
+	
+	//첨부파일 추가(로직)
+	public void insert(MultipartRequest multi, int boardNum) {
+		
+	}
+	
+}
+
+
+
+
+
+
+
+
+

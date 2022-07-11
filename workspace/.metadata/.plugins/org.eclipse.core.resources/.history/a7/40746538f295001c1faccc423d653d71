@@ -1,0 +1,8 @@
+package com.boardMVC.app.board.vo;
+
+public class BoardReplyVO {
+	private int replyNumber;
+	private int boardNumber;
+	private int memberNumber;
+	private String replyContent;
+}

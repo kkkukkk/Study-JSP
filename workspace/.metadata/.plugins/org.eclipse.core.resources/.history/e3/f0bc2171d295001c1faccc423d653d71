@@ -1,0 +1,25 @@
+package com.boardMVC.app.board;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.boardMVC.action.Action;
+import com.boardMVC.action.ActionForward;
+import com.oreilly.servlet.MultipartRequest;
+
+public class BoardUpdateOk implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		
+		String uploadFolder = "D:\\aigb_0900_hds\\jsp\\workspace\\boardMVC\\WebContent\\upload";
+		int fileSize = 1024 * 1024 * 5; //5M
+		
+		MultipartRequest multi = new MultipartRequest()
+		
+		return null;
+	}
+
+}

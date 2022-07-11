@@ -1,0 +1,23 @@
+package com.boardMVC.app.board.dao;
+
+import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.boardMVC.mybatis.config.MyBatisConfig;
+
+public class BoardDAO {
+	SqlSessionFactory sqlSessionFactory = MyBatisConfig.getSqlsessoinFactory();
+	SqlSession sqlSession;
+	
+	public BoardDAO() {
+		sqlSession = sqlSessionFactory.openSession(true);
+	}
+	
+	//게시글 목록
+	public void selectAll(Map<String, Integer> boardMap) {
+		
+	}
+	
+}

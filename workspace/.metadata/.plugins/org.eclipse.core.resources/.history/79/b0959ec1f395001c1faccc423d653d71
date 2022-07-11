@@ -1,0 +1,27 @@
+package com.boardMVC.app.board;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.boardMVC.action.Action;
+import com.boardMVC.action.ActionForward;
+import com.boardMVC.app.board.dao.BoardReplyDAO;
+import com.boardMVC.app.board.vo.BoardReplyDTO;
+
+public class BoardReplyListOk implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		int boardNumber = Integer.parseInt(req.getParameter("boardNumber"));
+		BoardReplyDAO rDao = new BoardReplyDAO();
+		ActionForward af = new ActionForward();
+		
+		rDao.selectReplies(boardNumber);
+		
+
+		return null;
+	}
+
+}

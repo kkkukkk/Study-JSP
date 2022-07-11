@@ -1,0 +1,30 @@
+package com.boardMVC.app.member;
+
+import java.io.IOException;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.boardMVC.action.Action;
+import com.boardMVC.action.ActionForward;
+import com.boardMVC.app.member.dao.MemberDAO;
+
+public class MemberLoginOk implements Action{
+
+	@Override
+	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		HashMap<String, String> loginMap = new HashMap<>();
+		MemberDAO dao = new MemberDAO();
+		int memberNumber = 0;
+				
+		loginMap.put("memberId", req.getParameter("memberId"));
+		loginMap.put("memberPw", req.getParameter("memberPw"));
+		
+		memberNumber = dao.login(loginMap);
+		
+		
+		return null;
+	}
+
+}

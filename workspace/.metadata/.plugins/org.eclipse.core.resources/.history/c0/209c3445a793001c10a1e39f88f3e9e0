@@ -1,0 +1,7 @@
+package com.boardMVC.app.member;
+
+import com.boardMVC.action.Action;
+
+public class MemberLogout implements Action{
+	
+}
